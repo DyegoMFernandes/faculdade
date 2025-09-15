@@ -1,0 +1,38 @@
+ip v4 - octetos - 32 bits
+ip v6 - sextetos - 128 bits -> Vai de 0-9 e A-F
+
+estático - continuidade - banco de dados
+ip dinamico - dhcp - dinamic post control protocol - serve pra configurar a rede rapidamente
+dhcp funciona como um broadcast - todas as maquinas recebem um alerta de que há ips disponíveis, então joga pras mas maquinas que desejam utilizar (a todo momento).
+
+gateway - faz uma ponte entre uma rede cabeada e uma rede sem fio - (rede local - gateway - internet)
+
+| **Protocolo** | **Porta Padrão** | **Função**                              | **Observações**                       |
+| ------------- | ---------------- | --------------------------------------- | ------------------------------------- |
+| **HTTP**      | 80               | Acesso a páginas web (sem criptografia) | Substituído por HTTPS por segurança   |
+| **HTTPS**     | 443              | Acesso a páginas web seguras            | Usa criptografia (SSL/TLS)            |
+| **FTP**       | 21 (controle)    | Transferência de arquivos               | Usa porta 20 para dados no modo ativo |
+| **SMTP**      | 25 / 587         | Envio de e-mails                        | 587 é mais seguro com autenticação    |
+| **POP3**      | 110              | Download de e-mails                     | Baixa os e-mails para o cliente       |
+| **IMAP**      | 143              | Acesso remoto a e-mails                 | Sincronização com o servidor          |
+| **DNS**       | 53               | Resolução de nomes (ex: google.com)     | Usa UDP por padrão, pode usar TCP     |
+| **SSH**       | 22               | Login remoto seguro (Linux/Unix)        | Substitui Telnet                      |
+| **Telnet**    | 23               | Login remoto (inseguro)                 | Obsoleto, sem criptografia            |
+
+
+| **Protocolo** | **Tipo**                | **Confiável?** | **Usado por**                     | **Características**                            |
+| ------------- | ----------------------- | -------------- | --------------------------------- | ---------------------------------------------- |
+| **TCP**       | Orientado à conexão     | ✅ Sim         | HTTP, HTTPS, SMTP, FTP, IMAP, SSH | Garante entrega, ordem e integridade dos dados |
+| **UDP**       | Não orientado à conexão | ❌ Não         | DNS, vídeos em tempo real, jogos  | Mais rápido, mas pode perder pacotes           |
+
+
+
+| **Etapa** | **O que acontece**                                                                       |
+| --------- | ---------------------------------------------------------------------------------------- |
+| 1.        | Você (IP privado `192.168.0.5`) abre o navegador e acessa `google.com`.                  |
+| 2.        | Seu notebook envia um pedido ao roteador (gateway).                                      |
+| 3.        | O roteador aplica **NAT**: troca o IP `192.168.0.5` pelo IP público (ex: `200.150.1.2`). |
+| 4.        | O pacote vai para a Internet com o IP público.                                           |
+| 5.        | O Google responde para o IP público.                                                     |
+| 6.        | O roteador **traduz de volta (usando NAT)** e envia a resposta para `192.168.0.5`.       |
+
